@@ -22,18 +22,6 @@ extension CategoryApiModel {
         }
     }
 }
-
-extension Category {
-    /// Converts domain category back to API category.
-    var apiModel: CategoryApiModel {
-        switch self {
-        case .mountains: .mountains
-        case .lakes: .lakes
-        case .bridges: .bridges
-        }
-    }
-}
-
 // MARK: - Landmark Mapping
 
 extension LandmarkApiModel {
@@ -62,24 +50,6 @@ extension LandmarkApiModel {
         )
     }
 }
-
-extension Landmark {
-    /// Converts domain landmark back to API landmark.
-    var apiModel: LandmarkApiModel {
-        LandmarkApiModel(
-            id: id.uuidString,
-            name: name,
-            location: location,
-            description: description,
-            imageName: imageName,
-            isFeatured: isFeatured,
-            category: category.apiModel,
-            createdAt: nil,
-            updatedAt: nil
-        )
-    }
-}
-
 // MARK: - Convenience for Loading
 
 extension Array where Element == LandmarkApiModel {

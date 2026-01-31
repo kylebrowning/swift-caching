@@ -8,28 +8,9 @@
 
 import SwiftUI
 
-// MARK: - Environment Keys
-
-private struct LandmarkServiceKey: EnvironmentKey {
-    static let defaultValue: LandmarkService = .unimplemented
-}
-
-private struct AnalyticsServiceKey: EnvironmentKey {
-    static let defaultValue: AnalyticsService = .unimplemented
-}
-
-// MARK: - Environment Values Extension
-
 extension EnvironmentValues {
-    var landmarkService: LandmarkService {
-        get { self[LandmarkServiceKey.self] }
-        set { self[LandmarkServiceKey.self] = newValue }
-    }
-
-    var analyticsService: AnalyticsService {
-        get { self[AnalyticsServiceKey.self] }
-        set { self[AnalyticsServiceKey.self] = newValue }
-    }
+    @Entry var landmarkService: LandmarkService = .unimplemented
+    @Entry var analyticsService: AnalyticsService = .unimplemented
 }
 
 // MARK: - View Extension for Convenience

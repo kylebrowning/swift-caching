@@ -143,7 +143,7 @@ extension LandmarkService {
         return LandmarkService(
             store: store,
             fetchLandmarks: { policy in
-                let mockData = LandmarkApiModel.mockApiResponse.compactMap(\.domainModel)
+                let mockData = Landmark.sampleData
 
                 switch policy {
                 case .cacheThenFetch:
@@ -189,13 +189,13 @@ extension LandmarkService {
             },
             fetchLandmark: { id in
                 try await Task.sleep(for: .milliseconds(200))
-                return LandmarkApiModel.mockApiResponse
+                return Landmark.sampleData
                     .first { $0.id == id }?
                     .domainModel
             },
             fetchLandmarksByCategory: { category in
                 try await Task.sleep(for: .milliseconds(300))
-                return LandmarkApiModel.mockApiResponse
+                return Landmark.sampleData
                     .compactMap(\.domainModel)
                     .filter { $0.category == category }
             },
@@ -212,7 +212,7 @@ extension LandmarkService {
     /// Immediately loaded with sample data - perfect for previews.
     static var preview: LandmarkService {
         let store = LandmarkStore()
-        let landmarks = LandmarkApiModel.mockApiResponse.compactMap(\.domainModel)
+        let landmarks = Landmark.sampleData
 
         // Pre-populate the store
         Task { @MainActor in

@@ -51,11 +51,36 @@ public struct Landmark: DomainModel, Identifiable, Cacheable {
     public static var cacheIdentifier: String { "landmarks" }
 }
 
-// MARK: - Sample Data (via API Model conversion)
+// MARK: - Sample Data
 
 extension Landmark {
-    /// Sample data loaded by converting mock API responses.
-    /// This simulates how real data would flow: API → Domain.
-    /// Notice that invalid entries (missing name, unknown category) are filtered out.
-    static let sampleData: [Landmark] = LandmarkApiModel.mockApiResponse.domainModels
+    static let sampleData: [Landmark] = [
+        Landmark(
+            id: UUID(uuidString: "1") ?? UUID(),
+            name: "Golden Gate Bridge",
+            location: "San Francisco, CA",
+            description: "An iconic suspension bridge.",
+            imageName: "goldengate",
+            isFeatured: true,
+            category: .bridges
+        ),
+        Landmark(
+            id: UUID(uuidString: "2") ?? UUID(),
+            name: "Lake Tahoe",
+            location: "Sierra Nevada, CA",
+            description: "A large freshwater lake in the Sierra Nevada.",
+            imageName: "tahoe",
+            isFeatured: false,
+            category: .lakes
+        ),
+        Landmark(
+            id: UUID(uuidString: "3") ?? UUID(),
+            name: "Half Dome",
+            location: "Yosemite, CA",
+            description: "A granite dome at the eastern end of Yosemite Valley.",
+            imageName: "halfdome",
+            isFeatured: true,
+            category: .mountains
+        ),
+    ]
 }

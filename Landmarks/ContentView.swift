@@ -69,24 +69,9 @@ struct ContentView: View {
 
 // MARK: - Environment Keys for Favorites
 
-private struct ToggleFavoriteKey: EnvironmentKey {
-    static let defaultValue: (UUID) -> Void = { _ in }
-}
-
-private struct IsFavoriteKey: EnvironmentKey {
-    static let defaultValue: (UUID) -> Bool = { _ in false }
-}
-
 extension EnvironmentValues {
-    var toggleFavorite: (UUID) -> Void {
-        get { self[ToggleFavoriteKey.self] }
-        set { self[ToggleFavoriteKey.self] = newValue }
-    }
-
-    var isFavorite: (UUID) -> Bool {
-        get { self[IsFavoriteKey.self] }
-        set { self[IsFavoriteKey.self] = newValue }
-    }
+    @Entry var toggleFavorite: (UUID) -> Void = { _ in }
+    @Entry var isFavorite: (UUID) -> Bool = { _ in false }
 }
 
 #Preview {

@@ -61,15 +61,8 @@ extension Services {
 
 // MARK: - Environment Integration
 
-private struct ServicesKey: EnvironmentKey {
-    static let defaultValue: Services = .unimplemented
-}
-
 extension EnvironmentValues {
-    var services: Services {
-        get { self[ServicesKey.self] }
-        set { self[ServicesKey.self] = newValue }
-    }
+    @Entry var services: Services = .unimplemented
 }
 
 extension View {
